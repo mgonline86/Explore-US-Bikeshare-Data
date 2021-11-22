@@ -245,11 +245,13 @@ def view_sample_raw_data(df):
     res = str(input('To view a sample of raw data enter "y" otherwise press any key: ')).lower()
     sample_size = 5
     if res == 'y':
-        sample_size = int(input("Please enter the desired sample size (from 1 to 20): "))
-        while sample_size not in range(1,21):
+        sample_size = str(input("Please enter the desired sample size (from 1 to 20): "))
+        while sample_size not in [str(x) for x in range(1,21)]:
             print('Wrong Entry!')
-            sample_size = int(input('Please enter the desired sample size (from 1 to 20): '))
-
+            sample_size = str(input('Please enter the desired sample size (from 1 to 20): '))
+        
+        sample_size = int(sample_size)
+        
         while res == 'y':
             if len(df.index) == 0:
                 print('-'*40)
